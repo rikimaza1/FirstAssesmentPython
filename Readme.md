@@ -71,7 +71,7 @@ Las manos levantadas se atenderán en orden de llegada.
 - Clonar el repositorio:
 
   - `https://github.com/rikimaza1/FirstAssesmentPython.git`
-- Crear y activar el entorno virtual en sus respectivas carpetas BBDD y FLASK:
+- Crear y activar el entorno virtual en la carpeta donde hemos clonado el repositorio:
   - Versión Python 3.11.2
 
   - Windows
