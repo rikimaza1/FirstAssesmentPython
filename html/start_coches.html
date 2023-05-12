@@ -1,0 +1,64 @@
+<!-- start_coches.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Información de coches</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+</head>
+
+<body>
+  <form method="post" action="/coches">
+    <legend>Información de coches</legend>
+    <fieldset  class="d-grid" >
+      <label for="coche">Selecciona una coche:</label>
+      <select id="coche" name="coche" class="col-form-label col-form-label-sm">
+        <option value="ford">Ford</option>
+        <option value="toyota">Toyota</option>
+        <option value="honda">Honda</option>
+      </select>
+      <label for="anyo" class="col-form-label col-form-label-sm">Año:</label>
+      <input type="number" id="anyo" name="anyo" >
+      <label for="modelo" class="col-form-label col-form-label-sm">Modelo:</label>
+      <input type="text" id="modelo" name="modelo" >
+
+      <div id="atributos">
+        <label for="color" class="col-form-label col-form-label-sm">Color:</label>
+        <input type="text" id="color" name="color" >
+      </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Revisar</button>
+  </form>
+
+  <script>
+    const cocheselect = document.getElementById("coche");
+    const atributosDiv = document.getElementById("atributos");
+
+    function mostrarAtributos() {
+      const coche = cocheselect.value;
+      atributosDiv.innerHTML = "";
+
+      if (coche === "ford") {
+        atributosDiv.innerHTML += `
+        <label for="color" class="col-form-label col-form-label-sm">Color:</label>
+        <input type="text" id="color" name="color" >
+          `;
+      } else if (coche === "toyota") {
+        atributosDiv.innerHTML += `
+            <label for="num_puertas" class="col-form-label col-form-label-sm">num_puertas:</label>
+            <input type="text" id="num_puertas" name="num_puertas">
+          `;
+      } else if (coche === "honda") {
+        atributosDiv.innerHTML += `
+            <label for="tipo_transmision" class="col-form-label col-form-label-sm">Tipo_transmision:</label>
+            <input type="text" id="tipo_transmision" name="tipo_transmisioin">
+          `;
+      }
+    }
+    cocheselect.addEventListener("change", mostrarAtributos);
+  </script>
+</body>
+
+</html>

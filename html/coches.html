@@ -1,0 +1,37 @@
+<!--coches.html-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Información de la coche</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+</head>
+
+<body>
+    <fieldset>
+        <legend>Información de coches</legend>
+        <div class="form-group row">
+            {% if coche %}
+            <p><strong>fabricante:</strong> {{ coche.fabricante }}</p>
+            <p><strong>Año:</strong> {{ coche.anyo }}</p>
+            <p><strong>Modelo:</strong> {{ coche.modelo }}</p>
+            {% if (coche.fabricante == "ford") %}
+            <p><strong>Color:</strong> {{ coche.color }}</p>
+            {% elif (coche.fabricante == "toyota") %}
+            <p><strong>Número de puertas:</strong> {{ coche.num_puertas }}</p>
+            {% elif (coche.fabricante == "honda") %}
+            <p><strong>tipo_transmision:</strong> {{ coche.tipo_transmision }}</p>
+            {% endif %}
+            <p><strong>Descripcion:</strong> {{ coche.descripcion() }}</p>
+            {% else %}
+            <p>La coche seleccionada no fue encontrada en la lista.</p>
+            {% endif %}
+            <form method="get" action="/">
+                <button type="submit" class="btn btn-primary">Mas coches</button>
+            </form>
+        </div>
+    </fieldset>
+</body>
+</html>
